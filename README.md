@@ -4,6 +4,7 @@ My Own Personal Learnings
 🚀 Introduction
 =================
 * [OOP](#creational-design-patterns)
+* [RestJS/Javascript](#creational-design-patterns)
 * [Dependency Injection](#creational-design-patterns)
 * [C#/.NET Frameworks](#creational-design-patterns)
 * [.NET MVC](#creational-design-patterns)
@@ -326,6 +327,18 @@ Data Structures
 	
 * How does a Hash Set (ie Dictionary<TKey,TValue>) work
 > Answer
+
+🧳 C# / .NET CORE (Frameworks)
+=================
+
+⛓️ REST / API Programming
+=================
+
+🤝🏼 ReactJS/JavaScript 
+=================
+
+💉 Dependency Injection
+=================
 
 🚀 Introduction To Design Patterns
 =================
