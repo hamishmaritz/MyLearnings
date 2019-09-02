@@ -31,10 +31,58 @@ Interview Questions
 >Answer
 
 * Explain the difference between overriding and overloading a method.
->Answer
+> Answer
+
+Constructors
+-----------------
+* What is a default constructor?
+> Answer
+
+* Can you overload constructors?
+> Answer
+
+* Can a constructor be private?
+> Answer
+
+* Is it legal to call a virtual method from within a constructor?
+> Answer
+
+Interfaces and Abstracts
+-----------------
+* What is an Interface?
+> Answer
+
+* Can an Interface contain fields?
+> Answer
+
+* Can an Interface be instantiated?
+> Answer
+
+* Can an Interface derive from another interface?
+> Answer
+
+* How does an abstract class differ from an interface?
+> Answer
 
 
+Multiple Inheritance
+-----------------
+* What is multiple inheritance?
+> Answer
 
+* Is it legal in C#?
+> Answer
+
+* Can you implement two interfaces with the same method name and signature?
+> Answer
+
+* Explain the difference between encapsulation and composition and when you would use each
+> Answer
+
+Polymorphism
+-----------------
+What is Polymorphism?
+> Answer
 
 🚀 Introduction To Design Patterns
 =================
