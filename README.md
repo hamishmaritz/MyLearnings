@@ -4,6 +4,7 @@ My Own Personal Learnings
 🚀 Introduction
 =================
 * [OOP](#creational-design-patterns)
+* [Algorithms](#creational-design-patterns)
 * [RestJS/Javascript](#creational-design-patterns)
 * [Dependency Injection](#creational-design-patterns)
 * [C#/.NET Frameworks](#creational-design-patterns)
@@ -341,6 +342,51 @@ Generics
 
 * Why use a Generic?
 > Answer
+
+🚀 Algorithms 
+=================
+List
+Stack
+Queue
+Heap
+
+
+Lists
+-----------------
+Lists allow duplicate items, can be accessed by index, and support linear traversal.
+List can hold duplicate objects.
+> If you just want a list and don't care about any duplicates, i.e list of people, shopping list, list of things to do in life.
+
+* ArrayList
+An array-based list that doesn't support generic types. It does not enforce type safety and should generally be avoided.
+Is just for compatibility with older versions of the framework where IList didn't exist
+* List 
+An array list that supports generic types and enforces type-safety. Since it is non-contiguous, it can grow in size without re-allocating memory for the entire list. This is the more commonly used list collection.
+
+Hashes/Dictionary
+-----------------
+Hashes are look-ups in which you give each item in a list a "key" which will be used to retrieve it later. Think of a hash like a table index where you can ask questions like "I'm going to find this object by this string value. Duplicate keys are not allowed.
+Is used to store pairs of key/value. You cannot have duplicate keys.
+* HashTable
+A basic key-value-pair map that functions like an indexed list.
+Is basically a List with no possibility of duplicates (and better performance in some scenarios)
+* Dictionary
+A hashtable that supports generic types and enforces type-safety.
+
+Queues
+-----------------
+Queues control how items in a list are accessed. You typically push/pop records from a queue in a particular direction (from either the front or back). Not used for random access in the middle.
+>  If you want to simulate a queue for example, in a hospital you have a queue and also priority queue (in emergency departments). The triage would determine who is in critical condition and needs to be treated.
+> Another example is a shopping queue, first person in line is 'usually' the first one to checkout.
+
+* Stack
+A LIFO (last in, first out) list where you push/pop records on top of each other.
+Stores objects in order they were added (through Push()), and when you retrieve an object (through Pop()) it is removed from the stack in a LIFO manner.
+> Used in your internal memory to push and pop values as you pass them to functions/methods.
+
+* Queue
+A FIFO (first in, first out) list where you push records on top and pop them off the bottom.
+Quite similar to a Stack except it is FIFO.
 
 🧳 C# / .NET CORE (Frameworks)
 =================
