@@ -328,11 +328,27 @@ Data Structures
 * How does a Hash Set (ie Dictionary<TKey,TValue>) work
 > Answer
 
+Generics
+-----------------
+* What is a Generic?
+> Answer
+
+* Why use a Generic?
+> Answer
+
 🧳 C# / .NET CORE (Frameworks)
 =================
 
 ⛓️ REST / Web API Programming
 =================
+* What is REST?
+REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
+
+* Why use REST?
+With REST, the server is free to change the exposed resources at will. There is no fixed API above and beyond what REST itself defines. The client needs only know the initial URI, and subsequently chooses from server-supplied choices to navigate or perform actions.
+
+Using REST correctly can help your system components remain properly decoupled and can be evolved more easily in the future than if you had tied them directly together in a typical RPC-like fashion.
+
 
 HTTP Methods
 -----------------
@@ -400,6 +416,34 @@ Interview Questions
 
 💉 Dependency Injection
 =================
+* What is Dependency Injection?
+> Dependency Injection, at least in programming, is just where you make sure to give each bit of "code" exactly what it depends on to do it's job.
+
+Think of it like legos and I asked you to build a pirate ship for a lego boat race. I could let you do it however you wanted, finding the pieces, building out the pirate ship how you saw fit.
+You'd have to go around and find pieces, maybe pieces that other builders want to use or that other builders changed when they last used that piece. You're pirate ship may not even float or meet the requirements for the boat race we're having.
+But if I give you a box with the instructions and stickers and rules and all the pieces you needed to build your pirate ship, you don't have to go searching and you don't have to worry about something you need being broken or taken by someone else. I've given you everything you depend on to get the job (build the ship) done correctly.
+
+This allows you to specialize in only following directions and building pirate ships. Not space ships. Or skyscrapers. And it allows us to measure how good you really are at building ships since we've eliminated as many things that could change as possible.
+You might become the best and fastest lego pirate ship builder in the world but if the kit or rules change, you don't have to worry about finding pieces or learning the rules. I'm giving you the instructions and the pieces so you just have to keep doing what you were doing and nothing changes, to you.
+Or I could swap in test pieces to see how they work with other existing pieces, or to measure how fast you built your ships or if there were any structural weaknesses. If I put the test pieces in a bucket, there's no guarantee that you'd use them. Or if you did use them and they broke, we wouldn't know exactly why. You may have used off brand legos. Or giant legos. Or broken legos.
+
+In a nutshell, what it means is that any given piece of code you write should be provided everything it needs to do its job, instead of creating things for itself.
+So say I'm writing a forum, and I'm specifically writing the code that adds a new user record to the database and sends them an email to confirm their registration.
+
+If I used dependency injection, that piece of code would be given a data model/database connecton to work with (instead of creating a new instance of one) and a external class with a pre-defined interface to send email instead of creating an SMTP client object.
+
+* Dependency Injection with Dependency Inversion
+For a lot of reasons, it makes sense to break any significant piece of software up into pieces. This is because humans can only deal with a certain amount of complexity at one time. If every developer on a project had to know everything about every piece of the project, they wouldn't get much done.
+So code is broken up into modules. The size and relationships between these modules depends on the problem the software is trying to solve. It turns out that a significant source of complexity in software projects is how these different modules change over time (from version to version), and how those changes affect the other modules that depend upon them.
+
+
+For instance, let's say that you are writing software that manages cruise ships for a cruise business. A call at the top layer might do something like take customer info and cruise info a book passage on that cruise for that customer. This is a very high level operation that directly implements a "use case" (a customer-facing capability that provides a complete user interaction).
+That top layer calls several things in the middle layer to accomplish this; it does things like call a billing module that places a hold on the customer's credit card to authorize payment, then updates a schedule to reserve a cabin on a particular ship for a particular trip, then charges the credit card, then calls an excursion planner module to get a bunch of suggestions for other things the customer can book in various ports, then finally calls an email module to send a confirmation email to the customer with all trip info.
+If you follow any particular call into any particular system, at some point you'l get to a point where you see many of these modules are calling into modules that no longer directly relate to the business at all. These modules provide generic functionality like "trim the whitespace off both ends of this string" or "sum this list of numbers".
+Note the direction of dependencies: the top layer that books passage depends upon stuff in the middle layer, the middle layer that reserves cabins relies on the string and math libraries. This might seem fine at first, but it means whenever some low level piece of functionality changes, every other part of the codebase is affected. This is not good for a variety of reasons. Good, modular design should isolate modules from the effects of changes that don't matter in other modules.
+This is what dependency inversion does. Instead of relying upon the code that does string manipulation directly, instead you rely on a very abstract interface that defines what the string code should do, but doesn't actually provide the code itself. Then, you have the code which implements that string manipulation functionality rely on that same definition. In this way, both the code that calls the functionality and the code that provides it rely on this piece in the middle that is very highly abstract, and only defines the contract between the two. This way, if the contract doesn't change, then either module on either side is able to change things in a way that doesn't affect the other.
+
+
 
 🧨 SOLID Principles
 =================
