@@ -328,6 +328,12 @@ Data Structures
 * How does a Hash Set (ie Dictionary<TKey,TValue>) work
 > Answer
 
+* Difference between Stack Vs Queue
+> Answer
+
+* Difference between Stack Vs Heap
+> Answer
+
 Generics
 -----------------
 * What is a Generic?
