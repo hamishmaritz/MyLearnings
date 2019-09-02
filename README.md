@@ -358,10 +358,10 @@ Interview Questions
 -----------------
 * Explain the architectural style for creating web API
 > The architectural style for creating web api are
-	* HTTP for client server communication
-	* XML/JSON as formatting language
-	* Simple URI as the address for the services
-	* Stateless communication
+> * HTTP for client server communication
+> * XML/JSON as formatting language
+> * Simple URI as the address for the services
+> * Stateless communication
 	
 * What tools are required to test your web API?
 > Postman/SoapUI
@@ -400,6 +400,213 @@ Interview Questions
 
 💉 Dependency Injection
 =================
+
+🧨 SOLID Principles
+=================
+* Single Responsibility
+* Open - Closed
+* Liskov Substitution
+* Interface Segregation
+* Dependency Inversion
+These are the 5 principles that help software designs be more understandable, flexible and adaptable.
+
+
+Solid Responsibility Principle
+-----------------
+The basic idea with this principle is that every module, class or function, should have the responsibilty for only a single piece of functionality.
+That responsibility should therefore be encapsulated entirely within something such as a class.
+Thus there should be only a single reason why this piece of functionality should change (Business and Logic changes separated).
+
+> Why do this? 
+
+* Makes it easier to verify that this single piece of functionality is doing as it should.
+* Splits a bigger process into smaller more manageable parts
+* Creates reusable pieces 
+
+
+Open - Closed Principle
+-----------------
+The idea that modules, class and functions should be open for extension but closed for modification.
+This pertains a lot to inheritance (Meyer's) and polymorphism.
+
+Polymorphic Open - Closed Principle refers to dealing with abstracted interfaces. Whereby various implementations of such an abstracted base class can be created through inheritance.
+
+An example of such a thing would be having an abstracted base Shape() with a declared function of CalculateArea().
+The implementations of this base could be Square(), Triangle() and Circle() that use CalculateArea().
+However, CalculateArea() may be different functions throughout these different implementations, dependent on the needs of the derived class.
+
+Square(): CalculateArea() => height ^ 2
+Triangle(): CalculateArea() => (height * base) / 2
+Circle(): CalculateArea() => (pi) * radius ^ 2
+
+Here we know that for each of the classes derived from Shape() needs to CalculateArea(), but not all in the same way or how they will go about it, so the CalculateArea() function is inherited, but overwritten in the derived classes.
+The existing interface is closed to modifications but new implementations of it are open to extension upon an unbounded group of possibilities of this function.
+
+
+> Why Do This?
+
+* Reduces fragility
+* Reduces the need to make smaller repeated changes everywhere
+
+Liskov Substitution Principle
+-----------------
+A statement that
+> S is a subtype of T, then objects of type T must be replaced with objects of type S
+
+In a nutshell, the relationship between S and T is that subtype S "is substitutional for" type T, rather than a "is a" relationship.
+That the child class is the parent class and should thus be able to reference the child class as the base class,
+
+```csharp
+BaseClass child = new ChildClass();
+// should have the same results as
+ChildClass chile = new ChildClass();
+```
+A violation of this principle would be that if a parent class' behaviour is changed within a child class.
+
+Interface Segregation Principle
+-----------------
+
+The concept of this principle is that no client should be forced to depend on methods it doesn't use.
+The idea of this is to split larger interfaces into smaller and more specific interfaces called role interfaces, in for derived classes to only concern themselves with the methods and data that relates to them.
+
+This principle means thinking about how changes to the interface could affect the derived classes and how these classes may force changes upon their inherited interfaces and what we can do to minimise that.
+
+Example:
+```csharp
+public interface IVehicle
+{
+    void Drive();
+    void Fly();
+    void Sail();
+}
+
+public class ChittyBangBang : IVehicle
+{
+    public void Drive()
+    {
+        // actions
+        Console.WriteLine("It can drive like a car!");
+    }
+    public void Fly()
+    {
+        // actions
+        Console.WriteLine("It can fly like a plane!");
+    }
+    public void Sail()
+    {
+        // actions
+        Console.WriteLine("It can sail like a boat!");
+    }
+}
+
+//However
+public class Car : IVehicle
+{
+    public void Drive()
+    {
+        // actions
+        Console.WriteLine("It can drive like a car!");
+    }
+
+    public void Fly(){ throw new NotImplementedException();}
+
+    public void Sail(){ throw new NotImplementedException();}
+}
+
+public class Airplane : IVehicle
+{
+    public void Drive(){ throw new NotImplementedException();}
+
+    public void Fly()
+    {
+        // actions
+        Console.WriteLine("It can fly like a plane!");
+    }
+
+    public void Sail(){ throw new NotImplementedException();}
+}
+```
+
+This example shows that while there is one user that implements all three methods of Drive, Fly and Sail, the other users that inherit this interface have no need for them and must throw exceptions.
+
+The solution is to adopt this Interface Segregation Principle and separate these Interfaces.
+
+```csharp
+public interface ICar { void Drive(); }
+public interface IPlane { void Fly(); }
+public interface IBoat { void Sail(); }
+
+public class ChittyBangBang : ICar, IPlane, IBoat 
+{
+    public void Drive(){/* actions...  */}
+    public void Fly(){/* actions...  */}
+    public void Sail(){/* actions...  */}
+}
+
+public class Car : ICar { public void Drive(){/* actions...  */} }
+public class Plane : IPlane { public void Fly(){/* actions...  */} }
+public class Boat : IBoat { public void Sail(){/* actions...  */} }
+```
+
+Whereas here we can see that the Vehicles are only needing the Interfaces which have the relevant methods that that particular class needs.
+Though this results in having many interfaces, it does indeed help overall when changes are needing to be made and prevents us from having larger interfaces where methods are redundant for many inherited classes.
+
+> Why Do This?
+
+* Helps keep a system decoupled (preventing unneccessary dependencies)
+* Helps keep things easier to refactor, change and redeploy
+* Reduces interface pollution (polluted with things that derived classes do not require)
+
+Dependency Inversion Principle
+-----------------
+Consequently if the Liskov Substitution and Open - Closed Principles are followed and applied into a software design, the code will also comply with the Dependency Inversion Principle.
+
+It focuses on interface abstraction between higher and lower level software components in order to remove the dependencies between them.
+
+Robert C. Martin's definition for this principle is made up of two parts:
+> High-level modules should not depend on low-level modules. Both should depend on abstractions
+> Abstractions should not depend on details. Details should depend on abstractions.
+
+Say you have different types of Coffee Machines that all perform differing levels of ability and functions. This example will look at a basic and complex coffee machine.
+
+One can create an interface for CoffeeMachine, which is implemented in both a BasicCoffeeMachine and a ComplexCoffeeMachine.
+CoffeeMachine has a single method to BrewFilterCoffee. And each implementation of the CoffeeMachine interface also has more specfic methods for them.
+
+While both machines essentially brew types of coffee, espresso brewing is quite different and the ComplexCoffeeMachine can both BrewFilterCoffee and BrewEspressoCoffee.
+A way to abstract these from one another would be to create separate interfaces.
+
+
+```csharp
+public interface CoffeeMachine
+{
+    void brewFilterCoffee();
+}
+
+public interface EspressoMachine
+{
+    void brewEspressoCoffee();
+}
+```
+
+This enables then for both the BasicCoffeeMachine and the ComplexCoffeeMachine to take the interfaces and methods that they requires, without the higher level interface depending on the details of the lower-level implementations.
+
+It also allows the addition of new functionality in terms of the brewEspressoCoffee, without needing to change the existing functionality of brewFilterCoffee that is already implemented elsewhere.
+
+
+```csharp
+public class BasicCoffeeMachine : CoffeeMachine
+{
+    public void brewFilterCoffee() { /* some action here */};
+}
+
+public class ComplexCoffeeMachine : CoffeeMachine, EspressoMachine
+{
+    public void brewEspressoCoffee() { /* some action here */};
+    public void brewFilterCoffee() { /* some action here */};
+}
+```
+
+
 
 🚀 Introduction To Design Patterns
 =================
