@@ -331,8 +331,69 @@ Data Structures
 🧳 C# / .NET CORE (Frameworks)
 =================
 
-⛓️ REST / API Programming
+⛓️ REST / Web API Programming
 =================
+
+HTTP Methods
+-----------------
+* GET
+* POST
+
+Headers
+-----------------
+
+Body/Content
+-----------------
+
+url-parameters
+-----------------
+
+HTTP Response Codes
+-----------------
+
+Server Side vs Clientside
+-----------------
+
+Interview Questions
+-----------------
+* Explain the architectural style for creating web API
+> The architectural style for creating web api are
+	* HTTP for client server communication
+	* XML/JSON as formatting language
+	* Simple URI as the address for the services
+	* Stateless communication
+	
+* What tools are required to test your web API?
+> Postman/SoapUI
+
+* What are the HTTP methods supported by REST?
+> GET: It requests a resource at the request URL. It should not contain a request body as it will be discarded. Maybe it can be cached locally or on the server.
+> POST: It submits information to the service for processing; it should typically return the modified or new resource.
+> PUT:  At the request URL it update the resource.
+> DELETE: At the request URL it removes the resource.
+> OPTIONS: It indicates which techniques are supported.
+> HEAD: About the request URL it returns meta information.
+
+* Can use GET request instead of PUT to create a resource
+> No, you are not supposed to use POST or GET. GET operations should only have view rights.
+
+* What are resources in a REST architecture?
+> Resources are identified by logical URLs; it is the key element of a RESTful design. Unlike, SOAP web services in REST, you view the product data as a resource and this resource should contain all the required information.
+
+* Some key characteristics of REST?
+> Some key characteristics of REST includes
+> * REST is stateless, therefore the SERVER has no state (or session data)
+> * With a well-applied REST API, the server could be restarted between two calls as every data is passed to the server
+> * Web service mostly uses POST method to make operations, whereas REST uses GET to access resources
+
+* what is the difference between PUT and POST?
+> "PUT" puts a file or resource at a particular URI and exactly at that URI. If there is already a file or resource at that URI, PUT changes that file or resource. If there is no resource or file there, PUT makes one
+
+> POST sends data to a particular URI and expects the resource at that URI to deal with the request. The web server at this point can decide what to do with the data in the context of specified resource
+
+* Which markup language can be used in Restful Web Api?
+> JSON and XML are the two markup language that can be used
+
 
 🤝🏼 ReactJS/JavaScript 
 =================
