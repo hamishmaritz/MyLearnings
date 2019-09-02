@@ -6,6 +6,7 @@ My Own Personal Learnings
 * [OOP](#creational-design-patterns)
 * [Dependency Injection](#creational-design-patterns)
 * [C#/.NET Frameworks](#creational-design-patterns)
+* [.NET MVC](#creational-design-patterns)
 * [REST/API Programming](#creational-design-patterns)
 * [Azure](#creational-design-patterns)
 * [Test Driven Development](#creational-design-patterns)
@@ -31,6 +32,9 @@ Interview Questions
 >Answer
 
 * Explain the difference between overriding and overloading a method.
+> Answer
+
+* Value Vs Reference
 > Answer
 
 Constructors
@@ -64,6 +68,9 @@ Interfaces and Abstracts
 * How does an abstract class differ from an interface?
 > Answer
 
+* When and why to use Inheritance vs Interface
+> Answer
+
 
 Multiple Inheritance
 -----------------
@@ -84,6 +91,17 @@ Polymorphism
 What is Polymorphism?
 > Answer
 
+Data Structures
+-----------------
+* Why would I use a HashSet instead of a List
+> Answer
+
+* How does List<T> work
+> Answer
+	
+* How does a Hash Set (ie Dictionary<TKey,TValue>) work
+> Answer
+
 🚀 Introduction To Design Patterns
 =================
 Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
@@ -96,6 +114,9 @@ Types of Design Patterns
 * [Creational](#creational-design-patterns)
 * [Structural](#structural-design-patterns)
 * [Behavioral](#behavioral-design-patterns)
+
+* MVC, Singleton, Factory
+* Strategy, Template Method, Bridge
 
 
 Creational Design Patterns
