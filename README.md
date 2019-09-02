@@ -17,6 +17,24 @@ My Own Personal Learnings
 
 OOP
 =================
+
+Basics of OOP (Catered to Air NZ)
+-----------------
+
+* What is an OBJECT?
+> An object is a self-contained, useable instance of a class
+A class is an entity that can be made up of data variables and/ or functions
+To create a new instance (object) of that class is called instantiation
+
+To put into simple terms:
+
+*A class is a blueprint
+*An object is a building made from that blueprint
+*There can be multiple buildings from the same blueprint
+*Classes themselves are NOT objects but are used to instantiate objects.
+*Some properties and methods of a class:
+
+
 * [Interview Questions](#creational-design-patterns)
 
 Interview Questions
