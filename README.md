@@ -21,20 +21,228 @@ OOP
 Basics of OOP (Catered to Air NZ)
 -----------------
 
-* What is an OBJECT?
-> An object is a self-contained, useable instance of a class
+What is an Object?
+-----------------
+An object is a self-contained, useable instance of a class
 A class is an entity that can be made up of data variables and/ or functions
 To create a new instance (object) of that class is called instantiation
 
->To put into simple terms:
+To put into simple terms:
 * A class is a blueprint
 * An object is a building made from that blueprint
 * There can be multiple buildings from the same blueprint
 * Classes themselves are NOT objects but are used to instantiate objects.
 * Some properties and methods of a class:
 
+```csharp
+public class MyClass
+{
+    public string myStringField = string.Empty;
 
-* [Interview Questions](#creational-design-patterns)
+    public void MyMethod(int parameter1, string parameter2)
+    {
+        Console.WriteLine($"Something about {parameter1} and {parameter2}");
+    }
+
+    public int AutoImplementedProperty {get;set;}
+
+    private int myProperty;
+
+    public int MyProperty
+    {
+        get{return myProperty;}
+        set{myProperty = value;}
+    }
+}
+```
+
+What is an Interface?
+-----------------
+An Interface can have methods, properties, events and indexes as it's members.
+However, it will contain ONLY the declaration of these members. The implementation will be given by the Class that implements the interface.
+This is used to achieve:
+```csharp 
+public interface IVehicle
+{
+    public string Make {get;set;}
+    public string Model {get;set;}
+    public int Wheels {get;set;}
+    public void Drive();
+    /// ...etc
+}
+
+public class Car : IVehicle
+{}
+
+public class Truck : IVehicle
+{
+    public void Load();
+}
+
+static void Main(string[] args)
+{
+    Truck garbageTruck = new Truck()
+    {
+        // fill in data for Make, Model, Wheels, call methods Drive and Load
+    };
+
+    Car hatchback = new Car()
+    {
+        // fill in data for Make, Model, Wheels, call methods Drive
+    };
+} 
+```
+
+Encapsulation
+-----------------
+Is combining related methods, properties and other members to be treated as a single group.
+
+```csharp
+public class TaxIncomeCalculations
+{
+    public decimal GetGrossIncome(decimal salary)
+    {
+        return GetRoundedCalculationAsInteger(salary / 12);
+    }
+
+    public decimal GetNetIncome(decimal grossIncome, decimal incomeTax)
+    {
+        var netIncome = grossIncome - incomeTax;
+
+        return GetRoundedCalculationAsInteger(netIncome);
+    }
+
+    public decimal GetSuperAmount(decimal grossIncome, decimal payRate)
+    {
+        var superAmount = grossIncome * payRate / 100;
+
+        return GetRoundedCalculationAsInteger(superAmount);
+    }
+}
+```
+Encapsulation also is a way to create Information Hiding through the privatisation of the states of some of the classes members.
+
+This ensures that other objects cannot affect the state of that data. Only by calling the public methods/functions of that object can they have access. The object thus manages it's own state.
+
+
+Abstraction
+-----------------
+Can be seen as an extension of Encapsulation.
+Where Encapsulation defines the desired level of abstraction, abstraction allows only making the releveant information visable.
+
+An example of Abstraction would be:
+
+A User knows that in order to GetCoffee() they need to put in the coffee and enter a button on the machine, however all the needed methods and background work is hidden to them, as they don't need to know all the complex implementations in order for them to GetCoffee().
+
+Another example:
+
+A simple search function to a database.
+A User enters the information they wish to find from the database. Say it is searching for the product invoices for a particular company.
+That could call for Search() using the name of that particular company.
+Internally, that search would then execute a series of steps to call the database, or server, in order to search perhaps using multiple calls to different methods in order to Get that list of invoice information and send it back to the user, perhaps changing it in some way in order to make it more readable for the user.
+All of this implementation goes on behind the scenes for the user. For them, they only had to know to enter the name of the company and press Search().
+
+This is Abstraction.
+It is the hiding, not of the Information at the class level like with Encapsulation, but of the complexity; abstracting the low levels of implementation from the user.
+This is particularly helpful when using larger code bases.
+The way things are done behind the scenes, should rarely change the way the user uses them.
+
+Another example of this is a phone:
+
+The average person does not understand the complexity of a phones lower-level implementation functions, however they will understand the abstracted high-level functions that are needed to use said phone.
+Things such as how a call or text is sent and received, pressing buttons to adjust volume or enter an application. The complex implementations that go on behind the scenes are not needed to be known by the user, only that pressing a button, or sending a text message, will do exactly what they expect.
+
+This becomes a very useful principle when things such as an update for the phone (i.e.: changes being made to the background implementation), in that these changes should not need to change or affect the abstracted functions that the user knows about.
+
+Going back to using the search example for instance; a change to the type of database or server that the company uses, should not necessarily need to affect the way a user searches for something.
+
+Inheritance
+-----------------
+The ability to "inherit" the data properties and behaviours (functions) from another class or interface.
+
+Class A "is a" or "has a" Class B relationship
+
+```csharp
+public class Person
+{
+    public string Name {get;set;}
+    public int Age {get;set;}
+}
+
+public class Student: Person
+{
+    public string Grade {get;set;}
+}
+
+public class Teacher: Person
+{
+    public string Teaches {get;set;}
+}
+
+// ...
+
+public static Main()
+{
+    Student student = new Student();
+    student.Name = "Bill";
+    student.Age = 15;
+    student.Grade = "A";
+
+    Teacher teacher = new Teacher();
+    teacher.Name = "Mrs Foo";
+    teacher.Age = 50;
+    teacher.Teaches = "English";
+}
+```
+
+Polymorphism
+-----------------
+Polymorphism is the ability to process objects differently depending on the data type or class.
+It is the ability to redefine methods for a derived class using method overloading and method overriding.\
+
+Example:
+
+```csharp
+public class Shape
+{
+    public virtual decimal CalculateArea();
+}
+
+public class Rectangle: Shape
+{
+    public decimal Height {get; set;}
+    public decimal Width {get;set;}
+
+    public override decimal CalculateArea()
+    {
+        return Height * Width;
+    }
+}
+
+public class Square: Shape
+{
+    public decimal Length {get;set;}
+
+    public override decimal CalculateArea()
+    {
+        return Math.Pow(Length, 2);  
+    }
+}
+```
+
+In this way, multiple shapes are able to inherit from the base of Shape and be treated as the same type of object, even though they all have differences in the way that the calculation method must be calculted.
+
+Note:
+* However, using the keyword base is a derived class able to access the base class method, if say the method was declared there.
+* Using this with multiple-level inheritance, the virtual method will remain virtual throughout the levels of inheritance. The virtual method from class X will remain virtual if class Y inherits from X, and Z inherits from Y. The method in Z will not be the method from Y unless the keyword sealed is used.
+
+```csharp
+public class Z : Y
+{
+    public sealed override void Method() {}
+}
+```
+
 
 Interview Questions
 -----------------
