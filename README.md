@@ -4,8 +4,35 @@ My Own Personal Learnings
 🚀 Introduction
 =================
 * [OOP](#creational-design-patterns)
+* [Dependency Injection](#creational-design-patterns)
+* [C#/.NET Frameworks](#creational-design-patterns)
+* [REST/API Programming](#creational-design-patterns)
+* [Azure](#creational-design-patterns)
+* [Test Driven Development](#creational-design-patterns)
 * [SOLID](#structural-design-patterns)
 * [Design Patterns](#Introduction-To-Design-Patterns)
+
+
+
+OOP
+=================
+* [Interview Questions](#creational-design-patterns)
+
+Interview Questions
+-----------------
+
+* What is the difference between an interface and an abstract class?
+> Answer
+
+* Define polymorphism and explain how you can take advantage of it in a .NET application.
+> Answer
+
+* What is Entity Framework and how does it work on a basic level?
+>Answer
+
+* Explain the difference between overriding and overloading a method.
+>Answer
+
 
 
 
