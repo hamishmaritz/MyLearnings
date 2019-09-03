@@ -249,7 +249,7 @@ public class Z : Y
 Interview Questions
 -----------------
 
-* What is the difference between an interface and an abstract class?
+* **What is the difference between an interface and an abstract class?**
 
 An interface is a **contract:** The person writing the interface says, "hey, I accept things looking that way", and the person using the interface says "OK, the class I write looks that way".
 
@@ -327,16 +327,26 @@ The key point about interfaces is not so much that they say what a class does, b
 
 > Abstract class: To implement the same or different behaviour among multiple related objects
 
-* Define polymorphism and explain how you can take advantage of it in a .NET application.
-> Answer
+* **Define polymorphism and explain how you can take advantage of it in a .NET application.**
+The word polymorphism means having many forms. In object-oriented programming paradigm, polymorphism is often expressed as 'one interface, multiple functions'.
 
-* What is Entity Framework and how does it work on a basic level?
+
+
+Example:
+> A baseball, an American football, and a basketball are all balls. They can all be thrown, but each one is thrown in a different way; you wouldn't throw a football like a baseball pitch and you wouldn't throw a baseball with a football spin. If I handed you a box with all three balls in it and told you to throw them all, you wouldn't pick up a basketball and ask whether to throw it like a basketball, a football, or a baseball, you'd just throw it like a basketball because you know how basketballs are thrown. Each different type of ball has a specific implementation of the 'throw' function, but they can all be treated similarly in that they are all throwable.
+
+Further Explained Of The Example:
+> In the previousexample, ball would be like an abstract class with an abstract method "throw" (technically that would belong to the thrower, but we'll ignore that detail). In this, though, there would be an interface -- say, IDances -- with a single method, Dance(). Human, Bear, and Robot would be three separate classes in different hierarchies, the first two maybe deriving from abstract class Animal, where Robot derives from abstract class Machine or Circuit or something. Each of the classes then implements the IDances interface rather than providing a concretion of an abstract method it inherited.
+
+
+
+* **What is Entity Framework and how does it work on a basic level?**
 >Answer
 
-* Explain the difference between overriding and overloading a method.
+* **Explain the difference between overriding and overloading a method.**
 > Answer
 
-* Value Vs Reference
+* **Value Vs Reference**
 > Answer
 
 Constructors
@@ -355,6 +365,7 @@ Constructors
 
 Interfaces and Abstracts
 -----------------
+
 * What is an Interface?
 > Answer
 
@@ -373,6 +384,35 @@ Interfaces and Abstracts
 * When and why to use Inheritance vs Interface
 > Answer
 
+Abstracts
+-----------------
+* Explain Abstract Classes
+
+You can draw a square. You can draw an equilateral triangle.
+You cannot draw a "shape".
+Shape is abstract.
+Square is a shape. Equilateral triangle is a shape.
+Not a perfect analogy, but it's a starting point!
+
+A common thing one does with shapes is find the area. However, finding the area for each shape is different. An abstract shape class would allow you to define an abstract GetArea method. Then each class derived from shape (triangle, square, circle, etc.) would have it's own appropriate implementation by overriding the abstract method.
+
+Expanding on this a bit further, you can then simply have an array of shapes that will all have a GetArea() method, so you could loop through that array calling "GetArea()" and be assured you'll get the area of that shape without being concerned about what shape it actually is.
+
+Generally you use abstract classes when you want some shared default functionality that all child classes can have. This is defined in the abstract base class. So you could define a method and put some functionality in it then decide whether or not to change that functionality in each class that derives from it. In practice you will likely find yourself using interfaces a ton and abstract classes almost never.
+
+**Abstract classes are tight coupling**
+They make sense in some scenarios, but you should be pretty skeptical about choosing them over an interface or composition imo. In complex, ever-growing projects, they almost always end up painting you into a corner or causing designs that ironically lead to 4 times as much code
+
+* How Can Abstract Classes be Tight Coupling?
+Abstract classes are never on their own; they have to have children, and the children will always take on all the traits of the abstract class.
+
+Imagine building a skyscraper on a dirt foundation. Then you later realize that it was a terrible idea and you know that you need that foundation to be something stronger. How easy (and how safe) it would be to go ahead and install that new foundation underneath the already standing building. Can it be done? Possibly. Can it be done quickly? Safely? Reliably? Ehh... I dunno.
+
+Or another analogy. Remember the old 286/386/486 computers? Imagine those are your base class. They were fine at the time and games ran fine. Then you'd upgrade from a 286 to a Pentium and all of a sudden, your video games were running at hyper speed and were unplayable? Why? because the games were actually programmed to the speed of the processor. There was no real way to fix it without rewriting those games. Imagine that synchronization was your abstract/base class. You'd be screwed. Ok so why not just rewrite the base class to use something else? Fair enough. For the sake of argument, let's say that half of the derived classes still depend on synchronizing with the clock speed while the other half could be modified to depend on something else? Or worse, what if it was a ridiculous mix of re-implementations because the new architecture is just totally different. This is a coupling nightmare. But if instead of implementing an abstract class, you chose to inject that dependency at the top of the graph, then everything that needed implementation A could use that, those that need B could use that, and so on -- all while continuing to maintain their relationships, if any remain.
+
+This is why I advocate for composition over inheritance. Just because things may be conceptually related (e.g. a pilot is a person) doesn't mean they should be related in OOP. If it's functionality that you're wanting to reuse, you can still achieve that without inheritance. If you're just trying to leverage polymorphism, then in my experience, interfaces are a more flexible/loosely-coupled way to achieve the same effect without creating unnecessary object families which usually leads to the exact opposite. Abstract/base classes still have their place, but like I said earlier, I personally meet my own designs with skepticism when I find myself wanting to base class something. I can almost come up with something much more future proof without adding too much more complexity, and in situations like this, it's almost always composition with dependency injection. One of the side effects to this practice is an increase in class cohesion, and since the staple of good design is loosely coupled and highly cohesive, this is just a pure win.
+One of the other drawbacks to the inherent tight coupling of abstract classes is testability. But that's a religious debate I'd rather not get into right now.
+
 
 Multiple Inheritance
 -----------------
@@ -387,6 +427,24 @@ Multiple Inheritance
 
 * Explain the difference between encapsulation and composition and when you would use each
 > Answer
+
+* When is inheritance better than composition? 
+
+> It is generally recommended to use composition over inheritance. This way, different responsibilities are nicely split into different objects owned by their parent object. This means we should not use inheritance to add extra functionality, because this case is handled by composition in a much cleaner way.
+
+The general rule is: do not use inheritance just for the purpose of re-usage of code. In most cases, the valid reason to use inheritance is polymorphism. In OO, polymorphism, if applied correctly, is a usefull design principle.
+
+Inheritance is used when you want to represent something as a concrete case of an already existing concept. BMW is a Vehicle, just as Mercedes is. Customer is a Person, just as Employee is.
+Inheritance has a crucial role in expressing concepts and their natural kinds.
+
+**Simple rules that you need to remember:**
+* Composition should be used for reuse purposes (Can Do, or Has A relationship).
+* Inheritance should be used for generalization purpose (Is A relationship).
+
+
+
+
+
 
 Polymorphism
 -----------------
