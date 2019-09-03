@@ -351,6 +351,7 @@ Further Explained Of The Example:
 
 
 * **Explain Polymorphism to your Grandma.**
+
 A dog, a spider, and a human can all walk at a rate of speed. Everyone knows this. But, when talking about the specifics of how they walk, each implementation is different. A spider has 8 legs and will 'scurry' around very quickly ( relative ). A dog has 4 legs and will leap and jump and run around. A human has 2 legs and will place one in front of the other, enabling them to walk.
 
 Well, if you were in control of a group of misfits, namely a group of spiders, dogs and humans, and you were their leader, you expect them to be competent and think for themselves. So, when you command them to, "Walk" you don't want to look at spiders and yell, "Alright, scurry and move all 8 legs!" and then look at dogs and yell, "Alright, leap using your 4 legs!" and then finally look at the human and yell, "Alright, and you use 2 legs, go!"
@@ -408,6 +409,18 @@ class C {
 Passing by value means you're giving a subprogram nothing but the contents of a variable.
 
 Passing by reference means you're giving it the whole variable.
+
+A great analogy is to imagine the object you are passing is a report and the function is a teacher.
+
+If you pass by value, you'd be giving your teacher a copy of your report. They would make edits, markup the paper, and assign you a grade. All this happens without your copy ever being touched.
+Passing by reference is only having one copy of the report and turning that in. When you get it back, it will be marked up and in a different state than when you last saw it.
+
+**Further In Depth**:
+
+A class is actually pass by value. The value it passes is essentially a pointer. A pointer is a value that represents a location in memory. When you modify a normal parameter in a function with the assign operator =, youre only changing the value of that parameter - not the original object that was passed through.
+But when you access the object with a dot, like so: someParamaterInAFunction.SomeProperty, youre actually using the pointer value to get the information from the location in memory it points to.
+
+
 
 **Pass by value:**
 * passes a copy of the parameter, even if it is very large
