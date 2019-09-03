@@ -249,7 +249,7 @@ public class Z : Y
 Interview Questions
 -----------------
 
-* **What is the difference between an interface and an abstract class?**
+* What is the difference between an interface and an abstract class?
 
 An interface is a **contract:** The person writing the interface says, "hey, I accept things looking that way", and the person using the interface says "OK, the class I write looks that way".
 
@@ -327,7 +327,9 @@ The key point about interfaces is not so much that they say what a class does, b
 
 > Abstract class: To implement the same or different behaviour among multiple related objects
 
-* **Define polymorphism and explain how you can take advantage of it in a .NET application.**
+
+* Define polymorphism and explain how you can take advantage of it in a .NET application.
+
 The word polymorphism means having many forms. In object-oriented programming paradigm, polymorphism is often expressed as 'one interface, multiple functions'.
 
 Polymorphism is important because you often need to handle something as a more abstract concept. Imagine you are programming a game, and you are building a UI system into it. You have all these different types of UI widgets, like buttons, and scrollbars, and text input fields, and so on.
@@ -345,7 +347,8 @@ So interfaces and inheritance allow a program to provide a wide range or functio
 Further Explained Of The Example:
 > In the previousexample, ball would be like an abstract class with an abstract method "throw" (technically that would belong to the thrower, but we'll ignore that detail). In this, though, there would be an interface -- say, IDances -- with a single method, Dance(). Human, Bear, and Robot would be three separate classes in different hierarchies, the first two maybe deriving from abstract class Animal, where Robot derives from abstract class Machine or Circuit or something. Each of the classes then implements the IDances interface rather than providing a concretion of an abstract method it inherited.
 
-* **Explain Polymorphism to your Grandma.**
+
+* Explain Polymorphism to your Grandma.
 A dog, a spider, and a human can all walk at a rate of speed. Everyone knows this. But, when talking about the specifics of how they walk, each implementation is different. A spider has 8 legs and will 'scurry' around very quickly ( relative ). A dog has 4 legs and will leap and jump and run around. A human has 2 legs and will place one in front of the other, enabling them to walk.
 
 Well, if you were in control of a group of misfits, namely a group of spiders, dogs and humans, and you were their leader, you expect them to be competent and think for themselves. So, when you command them to, "Walk" you don't want to look at spiders and yell, "Alright, scurry and move all 8 legs!" and then look at dogs and yell, "Alright, leap using your 4 legs!" and then finally look at the human and yell, "Alright, and you use 2 legs, go!"
@@ -357,10 +360,10 @@ So, we use things like inheritance which guarantees things that have something s
 That is basically polymorphism for me.
 
 
-* **What is Entity Framework and how does it work on a basic level?**
+* What is Entity Framework and how does it work on a basic level?
 >Answer
 
-* **Explain the difference between overriding and overloading a method.**
+* Explain the difference between overriding and overloading a method.
 > Answer
 
 * **Value Vs Reference**
