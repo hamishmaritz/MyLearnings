@@ -251,11 +251,13 @@ Interview Questions
 
 * What is the difference between an interface and an abstract class?
 
-> An interface is a **contract:** The person writing the interface says, "hey, I accept things looking that way", and the person using the interface says "OK, the class I write looks that way".
+An interface is a **contract:** The person writing the interface says, "hey, I accept things looking that way", and the person using the interface says "OK, the class I write looks that way".
+
  **An interface is an empty shell.** There are only the signatures of the methods, which implies that the methods do not have a body. The interface can't do anything. It's just a pattern.
+ 
 Implementing an interface consumes very little CPU, because it's not a class, just a bunch of names, and therefore there isn't any expensive look-up to do. It's great when it matters, such as in embedded devices.
 
-For example:
+> For example:
 ```java
 // I say all motor vehicles should look like this:
 interface MotorVehicle
@@ -284,10 +286,11 @@ class Car implements MotorVehicle
 }
 ```
 
-> Abstract classes, unlike interfaces, are classes. They are more expensive to use, because there is a look-up to do when you inherit from them.
+Abstract classes, unlike interfaces, are classes. They are more expensive to use, because there is a look-up to do when you inherit from them.
+
 Abstract classes look a lot like interfaces, but they have something more: You can define a behavior for them. It's more about a person saying, "these classes should look like that, and they have that in common, so fill in the blanks!".
 
-For example:
+> For example:
 ```java
 // I say all motor vehicles should look like this:
 abstract class MotorVehicle
@@ -316,6 +319,13 @@ class Car extends MotorVehicle
 }
 ```
 
+While abstract classes and interfaces are supposed to be different concepts, the implementations make that statement sometimes untrue. Sometimes, they are not even what you think they are.
+
+The key point about interfaces is not so much that they say what a class does, but allow objects that can Wizzle to make themselves useful to code that needs a Wizzler. Note that in many cases neither the person who writes the thing that can Wizzle, nor the person who needs a Wizzler, will be the person who writes the interface.
+
+> Interface: To implement a contract by multiple unrelated objects
+
+> Abstract class: To implement the same or different behaviour among multiple related objects
 
 * Define polymorphism and explain how you can take advantage of it in a .NET application.
 > Answer
