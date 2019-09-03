@@ -286,7 +286,7 @@ class Car implements MotorVehicle
 }
 ```
 
-Abstract classes, unlike interfaces, are classes. They are more expensive to use, because there is a look-up to do when you inherit from them.
+**Abstract classes**, unlike interfaces, are classes. They are more expensive to use, because there is a look-up to do when you inherit from them.
 
 Abstract classes look a lot like interfaces, but they have something more: You can define a behavior for them. It's more about a person saying, "these classes should look like that, and they have that in common, so fill in the blanks!".
 
@@ -371,7 +371,7 @@ Method overriding and overloading are techniques used to achieve certain behavio
 
 > Overriding has to do with inheritance. If Dog extends Animal, then method Dog.eat() overrides Animal.eat().
 
-**Over riding:** 
+**Overriding:** 
 When you replace a method in a parent class with the same method in a child class with different functionality. For example: class Animal has a toString that prints the species. Class Dog which extends Animal has a toString method that prints breed and name.
 
 > With overriding, it changes based on the object the method belongs to.
@@ -390,8 +390,8 @@ class Dog extends Animal {
 
 > Methods in the same class with the same name are called overloaded.
 
-**Overloading:** W
-hen you have two methods with the same exact name that are in the same class. However they take different parameters. For example: a Dog class may have a feed method that takes an int cups and has certain functionally. However an overloaded version of that method may take a string foodType and int cups with different functionality.
+**Overloading:** 
+When you have two methods with the same exact name that are in the same class. However they take different parameters. For example: a Dog class may have a feed method that takes an int cups and has certain functionally. However an overloaded version of that method may take a string foodType and int cups with different functionality.
 
 > Method overloading is a kind of polymorphism ("ad hoc polymorphism").
 
@@ -404,7 +404,33 @@ class C {
 ```
 
 * **Value Vs Reference**
-> Answer
+
+Passing by value means you're giving a subprogram nothing but the contents of a variable.
+
+Passing by reference means you're giving it the whole variable.
+
+**Pass by value:**
+* passes a copy of the parameter, even if it is very large
+* if you change it, the original value does not change
+
+**Pass by Reference:**
+* passes a reference to the real parameter
+* if you change it, the original value will change
+
+
+**Example 1:**
+Someone asks you for some coffee beans. You have a couple of options in how to respond:
+Go to the kitchen, collect some coffee beans from the container, and hand-deliver those beans to the person who asked. This is passing by value.
+
+Tell the person "yeah, there's some in a container in the kitchen, top shelf on the left." You haven't given them any coffee beans, but you've told them where the coffee beans are located so now they can go and get them on their own. This is more efficient from your point of view. This is passing by reference.
+
+
+**Example 2:**
+
+Let's say you want to know how much money I have in my bank account. I could tell you I have $5.32 (value) in it, or I can give you my bank account number (reference), and you can get the value yourself. If I just tell you the value, you can't change anything. If I give you the reference, you're free to change what's in my account, and I won't know (unless I have something set up to check).
+
+
+
 
 * **Difference between Polymorphism and Abstraction?**
 Inheritance and polymorphism are related. Polymorphism means that a class acts as itself and as its superclass. Inheritance is part of that.
