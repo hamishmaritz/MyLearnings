@@ -415,6 +415,14 @@ A great analogy is to imagine the object you are passing is a report and the fun
 If you pass by value, you'd be giving your teacher a copy of your report. They would make edits, markup the paper, and assign you a grade. All this happens without your copy ever being touched.
 Passing by reference is only having one copy of the report and turning that in. When you get it back, it will be marked up and in a different state than when you last saw it.
 
+> Passing by reference is only having one copy of the report and turning that in. When you get it back, it will be marked up and in a different state than when you last saw it.
+
+A slight improvement to this analogy might be that instead of turning in your report, you actually turned in a link to your report on Google Drive. The link is a reference to the contents of the report, and when the teacher access it and makes it changes it changes the original object.
+
+**Good Definition:**
+Passing an object by value is like texting your teacher a link to your google doc. Passing it by reference is like giving your teacher a Google doc with a link to the report.
+With pass by value, the teacher can edit your report, assuming the object itself is mutable. With pass by reference, the teacher could replace your report with am entirely different one.
+
 **Further In Depth**:
 
 A class is actually pass by value. The value it passes is essentially a pointer. A pointer is a value that represents a location in memory. When you modify a normal parameter in a function with the assign operator =, youre only changing the value of that parameter - not the original object that was passed through.
@@ -450,17 +458,88 @@ Inheritance and polymorphism are related. Polymorphism means that a class acts a
 
 Constructors
 -----------------
-* What is a default constructor?
-> Answer
+* **What is a default constructor?**
 
-* Can you overload constructors?
-> Answer
+* Constructors allow you to provide some sort of configuration information when instantiating a class.
+* The purpose of a constructor is to ensure that an object is created in a sensible state. 
+* In languages without proper constructors, you often need to create an object and then call an initialize method to set it up. A constructor both creates and sets up the object, which is often more clear.
 
-* Can a constructor be private?
-> Answer
+
+* **Can you overload constructors?**
+
+> It is quite similar to the Method Overloading
+
+It is the ability to redefine a Constructor in more than one form. A user can implement constructor overloading by defining two or more constructors in a class sharing the same name. C# can distinguish the constructors with different signatures. i.e. the constructor must have the same name but with different parameters list.
+
+We can overload constructors in different ways as follows:
+
+* By using different **type of arguments**
+* By using different **number of arguments**
+* By using different **order of arguments**
+
+Example:
+```csharp
+public ADD (int a, float b);
+public ADD (string a, int b);
+```
+
+Here the name of the class is ADD. In first constructor there are two parameters, first one is int and another one is float and in second constructor, also there is two parameters, first one is string type and another one is int type.
+Here the constructors have the same name but the types of the parameters are different, similar to the concept of method overloading.
+
+```csharp
+class ADD { 
+      
+    int x, y; 
+    double f; 
+    string s; 
+  
+    // 1st constructor 
+    public ADD(int a, double b) 
+    { 
+        x = a; 
+        f = b; 
+    } 
+  
+    // 2nd constructor 
+    public ADD(int a, string b) 
+    { 
+        y = a; 
+        s = b; 
+    } 
+  
+    // showing 1st constructor's result 
+    public void show() 
+    { 
+        Console.WriteLine("1st constructor (int + float): {0} ", 
+                                                       (x + f)); 
+    } 
+  
+    // shows 2nd constructor's result 
+    public void show1() 
+    { 
+        Console.WriteLine("2nd constructor (int + string): {0}",  
+                                                       (s + y)); 
+    } 
+} 
+  ```
+
+
+* **Can a constructor be private?**
+
+> Answer: **Yes**
+
+To prevent instantiation outside of the object, in the following cases:
+* Singleton
+* Factory method
+* Static-methods-only (utility) class
+* Constants-only class
+
+* Overloaded constructors - as a result of overloading methods and constructors, some may be private and some public. Especially in case when there is a non-public class that you use in your constructors, you may create a public constructor that creates an instance of that class and then passes it to a private constructor.
 
 * Is it legal to call a virtual method from within a constructor?
-> Answer
+
+By calling a protected / public virtual method from your constructor you potentially make your Base class constructor code dependent on the contents of the constructor of a class someone else Derives from your Base.
+
 
 Interfaces and Abstracts
 -----------------
