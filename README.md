@@ -665,10 +665,14 @@ Generics allow you to make a class that deals with objects of a different class,
 	
 
 
-* **Difference between Stack Vs Queue**
+* **Difference between Stack Vs Queue Vs Heap**
 
 A **stack** is a data structure. Like a stack of plates, the last plate you put on the stack is the first one you take off. This is known as LIFO, last in first out. A stack is useful if you are working on a task A and get interrupted by task B. You put A on the stack and start to work on B. When you're done with B, you check the stack to see what the previous task was. If C interrupts B, you put B on the stack, and start work on C.
 
+A stack is a very simple data structure - imagine a literal stack of books. You add the first book, simple. Then you add another book - it will now be the top one. Add a third - it is now on top. If you remove an element (pop it from the stack), it will by default return the top element - so the element that was most recently added.
+TL;DR the stack is a data structure that works by the "last in - first out" principle.
+
+A heap is a completely different structure. It is based on a tree structure - meaning you have a node, which can in turn have child nodes, and so on (I'll stick to binary trees, because they are somewhat easy to understand - in that case, every node can have up to 2 child nodes.)
 
 
 * **Difference between Stack Vs Heap vs Queue**
