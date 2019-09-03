@@ -596,19 +596,28 @@ One of the other drawbacks to the inherent tight coupling of abstract classes is
 
 Multiple Inheritance
 -----------------
-* What is multiple inheritance?
+* **What is multiple inheritance?**
 > Answer
 
-* Is it legal in C#?
-> Answer
+* **Is it legal in C#?**
 
-* Can you implement two interfaces with the same method name and signature?
-> Answer
+> C# Only allows Single Inheritance
 
-* Explain the difference between encapsulation and composition and when you would use each
-> Answer
+* **Can you implement two interfaces with the same method name and signature?**
 
-* When is inheritance better than composition? 
+No, its an error
+
+If two interfaces contain a method with the same signature but different return types, then it is impossible to implement both the interface simultaneously. 
+
+* **Explain the difference between encapsulation and composition and when you would use each**
+
+Composition is when I take a component and make use of it within another component. Whether that component is encapsulated or not is somewhat tangential to the fact that I’m using it—hopefully it’s well-encapsulated, but that doesn’t always have to be the case.
+
+Encapsulation is a measure of how well I’ve “hidden away” the various details a client might take a dependency on by accident; the danger being, if I change those details, clients will have to change (or at least recompile) in order to reflect those changes that they didn’t request (or should have even known about). The basic question of encapsulation is, “If I change <this detail> about component X, does any user of X even know that I did?” If the answer is no, then X is well-encapsulated
+	
+	
+
+* **When is inheritance better than composition?**
 
 > It is generally recommended to use composition over inheritance. This way, different responsibilities are nicely split into different objects owned by their parent object. This means we should not use inheritance to add extra functionality, because this case is handled by composition in a much cleaner way.
 
@@ -633,28 +642,54 @@ What is Polymorphism?
 
 Data Structures
 -----------------
-* Why would I use a HashSet instead of a List
-> Answer
+* **Why would I use a Dictionary instead of a List?**
 
-* How does List<T> work
-> Answer
+Dictionaries (hash tables) are much faster at **referencing something by a unique key**, that's what they're made for. If you don't have a key, a dictionary won't help you.
+
+For operations like enumeration they're likely slightly less efficient than a List<T>.
 	
-* How does a Hash Set (ie Dictionary<TKey,TValue>) work
-> Answer
+If you're going to primarily be searching through the items to find them on an attribute other than the unique key, and it's time critical, then a dictionary isn't for you.
 
-* Difference between Stack Vs Queue
-> Answer
+A dictionary is for fast keyed access. If you aren't accessing it via a key, then a List<T> would be easier/better as the LINQ queries would be easier to design.
+	
 
-* Difference between Stack Vs Heap
-> Answer
 
-Generics
------------------
-* What is a Generic?
-> Answer
+* **Explain Generics**
 
-* Why use a Generic?
-> Answer
+Think of generics as a way of describing a "thing of a thing", where you don't necessarily care what the second thing is.
+The most common example is a collection of objects. You know you are making a collection. You know that collection will contain objects. But you don't care or even know what type those objects will be.
+
+As you are implementing your collection, you still need a way to refer to the type of the objects it contains, even though you don't know what that type is.
+
+Generics allow you to make a class that deals with objects of a different class, without knowing what that class is.
+	
+
+
+* **Difference between Stack Vs Queue**
+
+A **stack** is a data structure. Like a stack of plates, the last plate you put on the stack is the first one you take off. This is known as LIFO, last in first out. A stack is useful if you are working on a task A and get interrupted by task B. You put A on the stack and start to work on B. When you're done with B, you check the stack to see what the previous task was. If C interrupts B, you put B on the stack, and start work on C.
+
+
+
+* **Difference between Stack Vs Heap vs Queue**
+
+Stack = FIFO
+Queue = FILO
+
+A stack is just an array that you can access quickly from one side. It's very simple. It's very fast to add something to it and also very fast to remove what you just added. Digging through there for other stuff takes more time.
+
+A heap uses a bunch of up-front computation when adding and removing elements in order to achieve the following property: regardless of what you add to the heap and in whatever order, you can very quickly remove the smallest element from it. This is very useful in many operations. The structure behind a heap is tree-like and it maintains invariant properties -- this is what the up-front cost involves.
+
+
+Imagine you're building an order processing system, perhaps to sell tickets to rock concerts. To deal with demand, you'll probably want to decouple the front end order-entry piece from the back-end database update piece (and then the user gets a confirmation when the database has been updated). To ensure fairness, you'll want to make sure that whenever two people order tickets for the same event at different times, the person who ordered first gets priority. So for that, you'll want a data structure where the first order placed in the queue gets processed into the database first -- a queue.
+
+
+Now imagine you're building a GUI application; say, a graphics package for drawing vector images. An important part of any modern GUI application is the Undo feature. So each time the user manipulates the document in some way -- adding a triangle here, rotating a square there -- you'll need to record what manipulation was performed, so that you can undo it if the user requests. When the user selects Undo repeatedly, the recent operations are undone in reverse order -- first the most recent thing they did, then the thing before that, and so on. So you'll want to use a stack.
+
+
+Note that both a stack and a queue can be implemented using an array structure such as an ArrayList. However, it's good programming practice not to limit yourself to a particular implementation. So if what you need is a queue, you should specify a Queue, and then you can freely choose which queue implementation you want -- and change your mind and switch to a different implementation if you need more functionality, better performance, or whatever.
+Also, in current Java the Dequeue interface is preferred to the old Stack interface, for similar reasons -- Dequeue has multiple implementations, whereas Stack was just a wrapper over the old Vector class. So if you need a stack where you can pull items out from the bottom of the stack quickly (say), you can pick an appropriate implementation.
+
 
 🚀 Algorithms 
 =================
