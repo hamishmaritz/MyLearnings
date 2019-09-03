@@ -526,7 +526,8 @@ Composition is also a "has-a" relationship but It is a special case of Aggregati
 
 For example, a library contains students and books. Relationship between library and students is Aggregation. Relationship between library and books is composition. A student can exist without a library and therefore it is aggregation. A book cannot exists without a library and therefore it is composition.
 
-* **What is the OO fundamental idea using C# that allows a data structure to perform operations on its own data?**
+
+* **What is the OOP fundamental idea using C# that allows a data structure to perform operations on its own data?**
 
 The this pointer is basically a way for a data structure (object) to be able to access methods that allow itself to perform operations on its own data. It is a way to manage state within a data structure.
 
@@ -534,6 +535,33 @@ The this pointer is basically a way for a data structure (object) to be able to 
 
 OOP is a way of thinking about and structuring code, nothing more. There are alternative ways of thinking about and structuring code that are just as valid, and perhaps more so, depending on the need.
 
+* **What are Delegates**
+
+A delegate is a way to specify which method you want to execute when an event fires.
+
+Delegates are references to methods. You want to store a method in a variable? The type must be a delegate.
+
+**Example:**
+
+Imagine your mom leaves for work before you wake up. On the fridge she leaves a sticky note with your chore for the day. That sticky note is a delegate, as she has delegated some work for you to do.
+Once in awhile you finish the task only to find another sticky note attached to the first one. The stack of notes is a multicast delegate.
+Now lets say that there is a spot on the fridge for chores to do before school and a different spot for chores when you get home. These are special delegates known as events.
+
+* **What is Aggregation vs Composition**
+
+Simple rules:
+
+*A "owns" B = Composition : B has no meaning or purpose in the system without A
+
+*A "uses" B = Aggregation : B exists independently (conceptually) from A
+
+**Example 1:**
+
+A Company is an aggregation of People. A Company is a composition of Accounts. When a Company ceases to do business its Accounts cease to exist but its People continue to exist.
+
+**Example 2: (very simplified)**
+
+A Text Editor owns a Buffer (composition). A Text Editor uses a File (aggregation). When the Text Editor is closed, the Buffer is destroyed but the File itself is not destroyed.
 
 
 
