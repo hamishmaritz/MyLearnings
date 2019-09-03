@@ -492,6 +492,51 @@ The virtual keyword is used while defining a class to specify that the methods a
 * Structs do not require constructors
 
 
+* **What is Cohesion?**
+
+In OOPS we develop our code in modules. Each module has certain responsibilities. Cohesion shows how much a module responsibilities are strongly related. 
+
+Higher cohesion is always preferred. Higher cohesion benefits are:
+
+* Improves maintenance of modules
+* Increase reusability
+
+
+* **What is Coupling?**
+
+Coupling refers to level of dependency between two software modules.
+
+Two modules are highly dependent on each other if you have changed in one module and for supporting that change every time you have to change in dependent module.
+
+Loose Coupling is always preferred.
+
+Inversion of Control and **dependency injections** are some techniques for getting loose coupling in modules.
+
+
+
+* **What is difference between Composition and Aggregation?**
+
+Association is a relationship between two objects. This relationship may be one-o-one, one-to-many, many-to-one, and many-to-many.
+
+For e.g. a student and teacher objects have an association.
+
+Aggregation is a special case of association in which objects have a "has-a" relationship. 
+
+Composition is also a "has-a" relationship but It is a special case of Aggregation in which an object manages the life cycle of another object.
+
+For example, a library contains students and books. Relationship between library and students is Aggregation. Relationship between library and books is composition. A student can exist without a library and therefore it is aggregation. A book cannot exists without a library and therefore it is composition.
+
+* **What is the OO fundamental idea using C# that allows a data structure to perform operations on its own data?**
+
+The this pointer is basically a way for a data structure (object) to be able to access methods that allow itself to perform operations on its own data. It is a way to manage state within a data structure.
+
+* **How does OOP simplify development?**
+
+OOP is a way of thinking about and structuring code, nothing more. There are alternative ways of thinking about and structuring code that are just as valid, and perhaps more so, depending on the need.
+
+
+
+
 
 Constructors
 -----------------
