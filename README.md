@@ -251,6 +251,10 @@ Interview Questions
 
 * **What is the difference between an interface and an abstract class?**
 
+* Abstract class are base class or parent class while interfaces are contracts.
+* Abstract classes are inherited while interfaces are implemented.
+* Abstract classes are used when we want to increase reusability in inheritance while interfaces are used to force a contract.
+
 An interface is a **contract:** The person writing the interface says, "hey, I accept things looking that way", and the person using the interface says "OK, the class I write looks that way".
 
  **An interface is an empty shell.** There are only the signatures of the methods, which implies that the methods do not have a body. The interface can't do anything. It's just a pattern.
@@ -327,7 +331,9 @@ The key point about interfaces is not so much that they say what a class does, b
 
 > Abstract class: To implement the same or different behaviour among multiple related objects
 
+* **In what scenarios will you use a abstract class and in what scenarios will you use a  interface?**
 
+If you want to increase reusability in inheritance then abstract classes are good. If you want implement or force some methods across classes must be for uniformity you can use a interface. So to increase  reusability via inheritance use abstract class as it is nothing but a base class and to force methods use interfaces.
 
 * **Define polymorphism and explain how you can take advantage of it in a .NET application.**
 
@@ -454,7 +460,38 @@ Let's say you want to know how much money I have in my bank account. I could tel
 
 
 * **Difference between Polymorphism and Abstraction?**
+
 Inheritance and polymorphism are related. Polymorphism means that a class acts as itself and as its superclass. Inheritance is part of that.
+
+* **What is the difference between procedural and object-oriented programming?**
+
+Procedural programming is based upon the modular approach in which the larger programs are broken into procedures. Each procedure is a set of instructions that are executed one after another. On the other hand, OOP is based upon objects. An object consists of various elements, such as methods and variables.
+
+* **Can you inherit private members of a class?** 
+
+No, you cannot inherit private members of a class because private members are accessible only to that class and not outside that class.
+
+* **Why is the virtual keyword used in code?**
+
+The virtual keyword is used while defining a class to specify that the methods and the properties of that class can be overridden in derived classes.
+
+* **What is the difference between a class and a structure?**
+
+**Class**
+
+* A Class is a reference type
+* Classes Support Inheritance
+* Class Can Contain Constructors
+
+
+**Struct**
+
+* A Struct is a value type
+* In a struct, memory is allocated on the stack
+* Structs do not support inheritance
+* Structs do not require constructors
+
+
 
 Constructors
 -----------------
@@ -464,6 +501,8 @@ Constructors
 * The purpose of a constructor is to ensure that an object is created in a sensible state. 
 * In languages without proper constructors, you often need to create an object and then call an initialize method to set it up. A constructor both creates and sets up the object, which is often more clear.
 
+
+Constructor is a special method of a class, which is called automatically when the instance of a class is created. It is created with the same name as the class and initializes all class members, whenever you access the class.
 
 * **Can you overload constructors?**
 
@@ -743,6 +782,30 @@ Quite similar to a Stack except it is FIFO.
 🧳 C# / .NET CORE (Frameworks)
 =================
 
+.NET Core
+-----------------
+* **What are some characteristics of .NET Core?**
+
+* Flexible Deployment
+* Cross Platform
+* Open Source
+
+* **Explain what is included in .NET Core?**
+
+* A .NET runtime, which provides a type system, assembly loading, a garbage collector, native interop and other basic services.
+* A set of framework libraries, which provide primitive data types, app composition types and fundamental utilities.
+
+.NET MVC
+-----------------
+
+* **What is MVC?*
+
+* Model is the data of your application. -> Responsible for Creating, Reading, Updating, and Deleting data (AKA CRUD operations)
+* View is the presentation of the data. -> What the user sees 
+* Controller is the brains/logic of your application. -> Accepts requests from the user to retrieve data from the Model or to change data in the Model and updates the View
+
+For instance, you're a car dealership, with many different cars in your inventory (model). When a customer asks to see a car, you (controller) looks in the inventory (model), retrieve the car and present it to the customer (view).
+
 ⛓️ REST / Web API Programming
 =================
 * What is REST?
@@ -776,17 +839,17 @@ Server Side vs Clientside
 
 Interview Questions
 -----------------
-* Explain the architectural style for creating web API
+* **Explain the architectural style for creating web API**
 > The architectural style for creating web api are
 > * HTTP for client server communication
 > * XML/JSON as formatting language
 > * Simple URI as the address for the services
 > * Stateless communication
 	
-* What tools are required to test your web API?
+* **What tools are required to test your web API?**
 > Postman/SoapUI
 
-* What are the HTTP methods supported by REST?
+* **What are the HTTP methods supported by REST?**
 > GET: It requests a resource at the request URL. It should not contain a request body as it will be discarded. Maybe it can be cached locally or on the server.
 > POST: It submits information to the service for processing; it should typically return the modified or new resource.
 > PUT:  At the request URL it update the resource.
@@ -794,24 +857,24 @@ Interview Questions
 > OPTIONS: It indicates which techniques are supported.
 > HEAD: About the request URL it returns meta information.
 
-* Can use GET request instead of PUT to create a resource
+* **Can use GET request instead of PUT to create a resource**
 > No, you are not supposed to use POST or GET. GET operations should only have view rights.
 
-* What are resources in a REST architecture?
+* **What are resources in a REST architecture?**
 > Resources are identified by logical URLs; it is the key element of a RESTful design. Unlike, SOAP web services in REST, you view the product data as a resource and this resource should contain all the required information.
 
-* Some key characteristics of REST?
+* **Some are the key characteristics of REST?**
 > Some key characteristics of REST includes
 > * REST is stateless, therefore the SERVER has no state (or session data)
 > * With a well-applied REST API, the server could be restarted between two calls as every data is passed to the server
 > * Web service mostly uses POST method to make operations, whereas REST uses GET to access resources
 
-* what is the difference between PUT and POST?
+* **What is the difference between PUT and POST?**
 > "PUT" puts a file or resource at a particular URI and exactly at that URI. If there is already a file or resource at that URI, PUT changes that file or resource. If there is no resource or file there, PUT makes one
 
 > POST sends data to a particular URI and expects the resource at that URI to deal with the request. The web server at this point can decide what to do with the data in the context of specified resource
 
-* Which markup language can be used in Restful Web Api?
+* **Which markup language can be used in Restful Web Api?**
 > JSON and XML are the two markup language that can be used
 
 
