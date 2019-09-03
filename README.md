@@ -779,6 +779,17 @@ Note that both a stack and a queue can be implemented using an array structure s
 Also, in current Java the Dequeue interface is preferred to the old Stack interface, for similar reasons -- Dequeue has multiple implementations, whereas Stack was just a wrapper over the old Vector class. So if you need a stack where you can pull items out from the bottom of the stack quickly (say), you can pick an appropriate implementation.
 
 
+Pokemon Example(Fun)
+=================
+* **Encapsulate:** You can tell Charmander to use Flamethrower. You don't know what flamethrower does inside Charmander's body, and you can't change what Flamethrower does, but you know that you can teach him Flamethrower and if you call Charmander-Flamethrower() it will return fire.
+
+* **Inheritance:** Charmander is Fire type. That means throwing water at him does double damage. Charmeleon inherits code from Charmander, so he's also Fire type. However nowhere in Charmeleon's code does it say he's Fire type, but throwing water at him still does double damage.
+
+* **Polymorphism:** Bulbasaur is a pokémon. Your pokéball works with any pokémon. That means your pokéball can store a Bulbasaur because the code reads Pokéball.Store(pokémon) and Bulbasaur is a pokémon. So if you call Pokéball->Store(Bulbasaur) it will work just as well as if you called Pokéball->Store(Squirtle).
+
+* **Abstraction:** Every Pokemon type interacts differently depending on the pokemon type and the attack type. There were initially 15 different types of Pokemon. New types were added later on, but the concept of type interaction was abstracted into a general Type class so only the specifications of the type needed to be implemented in future Types.
+
+
 🚀 Algorithms 
 =================
 List
