@@ -330,14 +330,31 @@ The key point about interfaces is not so much that they say what a class does, b
 * **Define polymorphism and explain how you can take advantage of it in a .NET application.**
 The word polymorphism means having many forms. In object-oriented programming paradigm, polymorphism is often expressed as 'one interface, multiple functions'.
 
+Polymorphism is important because you often need to handle something as a more abstract concept. Imagine you are programming a game, and you are building a UI system into it. You have all these different types of UI widgets, like buttons, and scrollbars, and text input fields, and so on.
+When it comes to drawing these widgets, you want to go through all the widgets and call a draw() function on each of them. How do you do that?
+You need a way of referring to each of the widgets as some sort of generic "Widget" abstraction, and then call draw on it. Without polymorphism, you can't directly do that.
+
+The importance of polymorphism comes out in larger programs, where it allows flexibility. Let's say you had to write a program to perform a single function. So you have your language, you have your requirements, you write your program, and you're done. Then you might want your program. Say your first program inverted the color of an image, and you'd like to add the ability to flip it horizontally or vertically. You could write these operations in a single class and switch between them using a GUI or command line. But say you add many more operations, with massive bodies of code. It makes your life much easier to just write a generic type "ImageOperation" with different implementations, create an array of instances, and invoke each according to the GUI/command-line. If you want to add a new type, just create a new implementation of the interface.
+So interfaces and inheritance allow a program to provide a wide range or functionality while remaining organized. This is called "extensibility", and it's the great innovation of OOP.
 
 
-Example:
+
+**Example:**
 > A baseball, an American football, and a basketball are all balls. They can all be thrown, but each one is thrown in a different way; you wouldn't throw a football like a baseball pitch and you wouldn't throw a baseball with a football spin. If I handed you a box with all three balls in it and told you to throw them all, you wouldn't pick up a basketball and ask whether to throw it like a basketball, a football, or a baseball, you'd just throw it like a basketball because you know how basketballs are thrown. Each different type of ball has a specific implementation of the 'throw' function, but they can all be treated similarly in that they are all throwable.
 
 Further Explained Of The Example:
 > In the previousexample, ball would be like an abstract class with an abstract method "throw" (technically that would belong to the thrower, but we'll ignore that detail). In this, though, there would be an interface -- say, IDances -- with a single method, Dance(). Human, Bear, and Robot would be three separate classes in different hierarchies, the first two maybe deriving from abstract class Animal, where Robot derives from abstract class Machine or Circuit or something. Each of the classes then implements the IDances interface rather than providing a concretion of an abstract method it inherited.
 
+* **Explain Polymorphism to your Grandma.**
+A dog, a spider, and a human can all walk at a rate of speed. Everyone knows this. But, when talking about the specifics of how they walk, each implementation is different. A spider has 8 legs and will 'scurry' around very quickly ( relative ). A dog has 4 legs and will leap and jump and run around. A human has 2 legs and will place one in front of the other, enabling them to walk.
+
+Well, if you were in control of a group of misfits, namely a group of spiders, dogs and humans, and you were their leader, you expect them to be competent and think for themselves. So, when you command them to, "Walk" you don't want to look at spiders and yell, "Alright, scurry and move all 8 legs!" and then look at dogs and yell, "Alright, leap using your 4 legs!" and then finally look at the human and yell, "Alright, and you use 2 legs, go!"
+You simply want to look at your group of misfits, no matter what they might be, and say, "Walk." They know how to handle themselves from there.
+
+Implementing Polymorphism is a lot like this, in my opinion. Your main driver program, or whatever happens to be using a variety of objects at the moment, does not want to do the guess work of figuring out what object it is dealing with and their specific implementation of something as basic as walking.
+
+So, we use things like inheritance which guarantees things that have something similar / in common will have similar properties. Dogs, humans, and spiders will all have walk methods. So, no matter what object we are currently working with, we do not care. We tell that object to walk, and it will handle the 'How' based on its implementation.
+That is basically polymorphism for me.
 
 
 * **What is Entity Framework and how does it work on a basic level?**
@@ -348,6 +365,9 @@ Further Explained Of The Example:
 
 * **Value Vs Reference**
 > Answer
+
+* **Difference between Polymorphism and Abstraction?**
+Inheritance and polymorphism are related. Polymorphism means that a class acts as itself and as its superclass. Inheritance is part of that.
 
 Constructors
 -----------------
@@ -401,9 +421,11 @@ Expanding on this a bit further, you can then simply have an array of shapes tha
 Generally you use abstract classes when you want some shared default functionality that all child classes can have. This is defined in the abstract base class. So you could define a method and put some functionality in it then decide whether or not to change that functionality in each class that derives from it. In practice you will likely find yourself using interfaces a ton and abstract classes almost never.
 
 **Abstract classes are tight coupling**
+
 They make sense in some scenarios, but you should be pretty skeptical about choosing them over an interface or composition imo. In complex, ever-growing projects, they almost always end up painting you into a corner or causing designs that ironically lead to 4 times as much code
 
-* How Can Abstract Classes be Tight Coupling?
+* **How Can Abstract Classes be Tight Coupling?**
+
 Abstract classes are never on their own; they have to have children, and the children will always take on all the traits of the abstract class.
 
 Imagine building a skyscraper on a dirt foundation. Then you later realize that it was a terrible idea and you know that you need that foundation to be something stronger. How easy (and how safe) it would be to go ahead and install that new foundation underneath the already standing building. Can it be done? Possibly. Can it be done quickly? Safely? Reliably? Ehh... I dunno.
